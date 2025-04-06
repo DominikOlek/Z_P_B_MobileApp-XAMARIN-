@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Z_P_B_1.Views.RegPage"
+             Shell.NavBarIsVisible="False">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Orientation="Vertical">
+                <Grid Margin="5" VerticalOptions="CenterAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.ColumnSpan="3" Grid.Row="1" LineBreakMode="NoWrap" FontSize="32" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand">Rejestracja konta</Label>
+
+                    <Label Text="Imię: " Grid.Column="1" VerticalTextAlignment="Center" Grid.Row="2" LineBreakMode="WordWrap"/>
+                    <Entry Placeholder="Wpisz imię: " Grid.Column="2" x:Name="imie"  Grid.Row="2" MaxLength="15"/>
+
+                    <Label Text="Nazwisko: " Grid.Column="1" VerticalTextAlignment="Center"  Grid.Row="3" LineBreakMode="WordWrap"/>
+                    <Entry Placeholder="Wpisz nazwisko: " Grid.Column="2" x:Name="nazwisko"  Grid.Row="3" MaxLength="15" />
+
+                    <Label Text="Pesel: " Grid.Column="1" VerticalTextAlignment="Center"  Grid.Row="4" LineBreakMode="WordWrap"/>
+                    <Entry Placeholder="Wpisz numer pesel: " Grid.Column="2" x:Name="pesel" MaxLength="11"  Grid.Row="4" Keyboard="Numeric"/>
+
+                    <Label Text="E-mail: " Grid.Column="1" VerticalTextAlignment="Center"  Grid.Row="5" LineBreakMode="WordWrap"/>
+                    <Entry Placeholder="Wpisz adres: " Grid.Column="2" x:Name="email"  Grid.Row="5" Keyboard="Email" MaxLength="25"/>
+
+                    <Label Text="Hasło: " Grid.Column="1" VerticalTextAlignment="Center"  Grid.Row="6" LineBreakMode="WordWrap"/>
+                    <Entry Placeholder="Wpisz hasło: " Grid.Column="2" x:Name="haslo" IsPassword="True" Grid.Row="6"/>
+
+                    <Label Text="Potwierdź Hasło: " Grid.Column="1" VerticalTextAlignment="Center"  Grid.Row="7" LineBreakMode="WordWrap"/>
+                    <Entry Placeholder="Wpisz hasło: " Grid.Column="2" x:Name="hasloP" IsPassword="True" Grid.Row="7"/>
+
+                    <Label Text="Numer Telefonu: " Grid.Column="1" VerticalTextAlignment="Center"  Grid.Row="8" LineBreakMode="WordWrap"/>
+                    <Entry Placeholder="Wpisz numer: " Grid.Column="2" x:Name="tel" Grid.Row="8" Keyboard="Telephone" MaxLength="9"/>
+
+                    <Label Text="Data Urodzenia: " Grid.Column="1" VerticalTextAlignment="Center"  Grid.Row="9" LineBreakMode="WordWrap"/>
+                    <DatePicker MinimumDate="01/01/1922" MaximumDate="01/01/2022" Date="01/01/2000" Grid.Column="2" x:Name="data"  Grid.Row="9" Format="yyyy-MM-dd"/>
+
+                    <CheckBox Grid.Column="1" Grid.Row="10"/>
+                    <Label FontSize="Small" Text="Zapoznałem się z regulaminem i go akceptuję." Grid.Column="2" Grid.Row="10">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+                <StackLayout>
+                    <Button Text="Utwórz konto" Clicked="Button_Clicked"/>
+                    <Label x:Name="Error" HorizontalTextAlignment="Center" TextTransform="Uppercase" FontSize="Medium" Text="Konto o podanym numerze pesel lub email już istnieje. &#10; Upewnij się czy dane zostały wprowadzone prawidłowo" TextColor="Red" IsVisible="false"/>
+                    <Label FontSize="Small" Text="Wprowadzone dane będą wykorzystywane do zapewnienia poprawnego działania systemu. Prosimy wpisywać dane zgodne z rzeczywistością"/>
+            </StackLayout>
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

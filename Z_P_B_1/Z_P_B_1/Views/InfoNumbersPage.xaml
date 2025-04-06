@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Z_P_B_1.Views.InfoNumbersPage"
+             Title="Informacje i wywiad ratowniczy">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label Text="Jak zgłaszać zdarzenie przez numer alarmowy"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+                    FontSize="Medium"/>
+                <Frame>
+                    <StackLayout >
+                    <Label Text="Miejsce rozmowy powinno znajdować się w pobliżu zdarzenia i umożliwiać przeprowadzenie spokojnej rozmowy, nie narażając na niebezpieczeństwo osoby zgłaszającej" />
+                    <Label Text="Jeśli to możliwe, zgłoszenie powinno być wykonywane przez osobę będącą bezpośrednim świadkiem zdarzenia." />
+                    <Label Text="Powiadom pozostałych świadków zdarzenia o tym, że łączysz się z numerem alarmowym 112, tak aby nie dublowali Twojego zgłoszenia." />
+                    <Label Text="Po wybraniu numeru alarmowego 112 cierpliwie czekaj na zgłoszenie się operatora, wykorzystaj czas oczekiwania na zorientowanie się w dokładnym adresie zdarzenia." />
+                    <Label Text="Podaj dokładny adres lub sposób dotarcia na miejsce zdarzenia, jeśli to możliwe zaczynając od gminy lub powiatu, w którym się znajdujesz" />
+                    <Label Text="Krótko opisz zdarzenie, które chcesz zgłosić." />
+                    <Label Text="Odpowiadaj na pytania operatora." />
+                    <Label Text="Udziel dodatkowych informacji, o które poprosi Cię operator." />
+                    <Label Text="Podaj swoje dane tak, aby służby mogły się z Tobą skontaktować w wypadku zaistnienia jakichkolwiek niejasności." />
+                    <Label Text="Nie rozłączaj się do czasu wyraźnego potwierdzenia przyjęcia zgłoszenia" />
+                    <Label Text="Po zakończonej rozmowie staraj się nie korzystać ze swojego telefonu, aby umożliwić służbom oddzwonienie do Ciebie w celu pozyskania dodatkowych informacji." />
+                    <Label Text="W przypadku zmiany sytuacji już po dokonaniu zgłoszenia, niezwłocznie poinformuj o tym operatora numerów alarmowych w Centrum Powiadamiania Ratunkowego." />
+                    </StackLayout>
+                </Frame>
+
+                <Label Text="Jak przeprowadzić wywiad ratowniczy SAMPLE"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+                    FontSize="Medium"/>
+                <Frame>
+                    <StackLayout >
+                        <Label Text="S (Symptomy) – pierwszym etapem jest wypytanie poszkodowanego o to, jakie dolegliwości odczuwa, co go boli. Warto spytać również o widoczne nieprawidłowości np. rany. Na tym etapie można też wypytać o rodzaj i nasilenie bólu w skali od 1 do 10, od kiedy boli i o wszystkie inne kwestie, które mogą być istotne w celu ustalenia choroby/skutków urazu." />
+                        <Label Text="A (Alergie) – drugim elementem wywiadu SAMPLE jest wypytanie poszkodowanego o alergie, zwłaszcza na lekarstwa, ale też pokarmy i substancje lotne. Czy poszkodowany miał kontakt z alergenami, czy dolegliwość mogła być spowodowana anafilaksją. Pytania o alergie są ważne z kilku względów, po pierwsze mogą służyć do ustalenia przyczyny, a po drugie zapobiegają podaniu poszkodowanemu leku/substancji, która mogłaby zaszkodzić." />
+                        <Label Text="M (Medykamenty) – pytania o leki mają na celu ustalenie, jakie pacjent przyjmuje leki, czy bierze je regularnie, czy ma przewlekłe choroby wymagające przyjmowania lekarstw; czy zażywał ostatnim czasie jakieś nowe leki, które mogłyby wywołać działania niepożądane." />
+                        <Label Text="P (Przebyte choroby) – w trakcie zbierania wywiadu ratowniczego należy zapytać poszkodowanego (lub jego bliskich) o to, czy ostatnio na coś chorował, czy ma zdiagnozowane przewlekłe choroby, czy w ostatnim czasie przeszedł jakąś operację i był z jakiegoś powodu diagnozowany. Należy poprosić rodzinę poszkodowanego o dostarczenie do szpitala dokumentacji medycznej." />
+                        <Label Text="L (Lunch) – pytanie o ostatni posiłek ma znaczenie pod kątem podawanie niektórych leków, czy prowadzenia zabiegów, dlatego ta informacja będzie istotna przede wszystkim z punktu widzenia ZRM i lekarzy." />
+                        <Label Text="E (Events, czyli co się stało) – wywiad sample należy zakończyć zebraniem informacji od poszkodowanego oraz świadków zdarzenia co do okoliczności, które się wydarzyły przed wystąpieniem objawów. Dzięki temu ratownik zyskuje pełen obraz sytuacji." />
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

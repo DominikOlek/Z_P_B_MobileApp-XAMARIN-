@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Z_P_B_1.Views.FirstAidItem">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="5" Padding="5">
+                <Grid HorizontalOptions="FillAndExpand"
+                              VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="150"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image HorizontalOptions="Center"
+                        Source="{Binding Image}"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Aspect="Fill"
+                        HeightRequest="150"/>
+                <AbsoluteLayout Grid.Row="0"
+                       Grid.Column="0">
+                    <BoxView Color="White"
+                        Opacity="0.5"
+                        AbsoluteLayout.LayoutBounds="0,0.5,1,0.2"
+                        AbsoluteLayout.LayoutFlags="All" />
+
+                    <Label 
+                        AbsoluteLayout.LayoutBounds="0,0,1,1"
+                        AbsoluteLayout.LayoutFlags="All"
+                        Text="{Binding Titlee}"
+                        TextColor="Black"
+                        FontSize="{DynamicResource textSizeBigg}"
+                        FontAttributes="Bold"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"/>
+                </AbsoluteLayout>
+            </Grid>
+
+            <Label Text="Kroki postępowania:" StyleClass="Header"  />
+            <Label Text="{Binding Steps}"/>
+            <Label Text="Opis czynności:" StyleClass="Header" />
+            <Label Text="{Binding OtherInfo}"/>
+
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

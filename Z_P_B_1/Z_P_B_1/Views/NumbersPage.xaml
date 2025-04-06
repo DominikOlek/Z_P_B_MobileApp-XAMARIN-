@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Z_P_B_1.Views.NumbersPage"
+             xmlns:local="clr-namespace:Z_P_B_1.ViewModels"
+             Title="Numery alarmowe">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label  Text="Lista numerów alarmowych" FontAttributes="Bold" FontSize="Title" HorizontalTextAlignment="Center" />
+                <Label  Text="Kliknij dwukrotnie aby zadzwonić" FontSize="Medium" HorizontalTextAlignment="Center" />
+                <CollectionView x:Name="ItemsListView"
+                SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="20">
+                            <Frame>
+                                    <Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding Num}" FontAttributes="Bold" FontSize="Medium"/>
+                                                <Span Text=" - " />
+                                                <Span Text="{Binding Describe}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </Frame>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        NumberOfTapsRequired="2"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:NumbersViewModel}}, Path=PhoneCall}"
+                                        CommandParameter="{Binding Num}">
+                                    </TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView> 
+    </ContentPage.Content>
+</ContentPage>

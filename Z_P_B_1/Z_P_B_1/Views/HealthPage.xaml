@@ -1,0 +1,51 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Z_P_B_1.Views.HealthPage"
+             xmlns:local="clr-namespace:Z_P_B_1.ViewModels"  
+             xmlns:model="clr-namespace:Z_P_B_1.Models" x:DataType="local:HealthPageViewModel"
+             Title="Informacje zdrowotne">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Zaktualizuj dane"  Command="{Binding GetInfo}"/>
+    </ContentPage.ToolbarItems>
+    <ScrollView>
+        <StackLayout>
+            <!--<SearchBar Placeholder="Wyszukaj" TextChanged="SearchBar_TextChanged" />-->
+            <!--
+      x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.
+      https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/data-binding/compiled-bindings
+    -->
+            <RefreshView x:DataType="local:HealthPageViewModel"  IsEnabled="{Binding IsBusy,Mode=TwoWay}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                <StackLayout>
+                    <CollectionView x:Name="ItemsListView"
+                ItemsSource="{Binding Recipes}"
+                SelectionMode="None">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Padding="10" x:DataType="model:RecipeDto">
+                                    <Frame>
+                                        <StackLayout>
+                                            <Label Text="{Binding description}" 
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="{DynamicResource textSizeBigger}" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                                            <Label FontSize="{DynamicResource textSize}" LineBreakMode="NoWrap" 
+                                    Style="{DynamicResource ListItemTextStyle}" >
+                                                <Label.Text>
+                                                    <MultiBinding StringFormat="Data ważności: {0}/{1}/{2} ">
+                                                        <Binding Path="expireDate.Day" />
+                                                        <Binding Path="expireDate.Month" />
+                                                        <Binding Path="expireDate.Year" />
+                                                    </MultiBinding>
+                                                </Label.Text>
+                                            </Label>
+                                        </StackLayout>
+                                    </Frame>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                </StackLayout>
+            </RefreshView>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

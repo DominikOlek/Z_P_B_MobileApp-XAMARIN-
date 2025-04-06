@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Z_P_B_1.Views.MainPage"
+             xmlns:local="clr-namespace:Z_P_B_1.ViewModels"  
+             xmlns:model="clr-namespace:Z_P_B_1.Models"
+             Title="Strona Główna">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <RefreshView x:DataType="local:MainPageViewModel" Command="{Binding LoadItemsCommand}"  IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                    <RelativeLayout IsVisible="true">
+                        <CollectionView x:Name="ItemsListView"
+                ItemsSource="{Binding infoColection}"
+                SelectionMode="None">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout Padding="10" x:DataType="model:Info">
+                                        <StackLayout>
+                                            <Label x:Name="FirstName" FontSize="{DynamicResource textSizeBigg}" HorizontalTextAlignment="Center">
+                                                <Label.Text>
+                                                    <MultiBinding StringFormat="Witaj {0} {1}, oto twoje ostatnie powiadomienia: ">
+                                                        <Binding Path="name" />
+                                                        <Binding Path="lastName" />
+                                                    </MultiBinding>
+                                                </Label.Text>
+                                            </Label>
+                                            <Label Text="{Binding info}" 
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="{DynamicResource textSizeBigger}" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        <Grid RowSpacing="1" VerticalOptions="StartAndExpand"
+                RelativeLayout.WidthConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                RelativeLayout.HeightConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.25}"
+                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.75}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10"/>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+
+                            <BoxView HeightRequest="1"  
+                HorizontalOptions="FillAndExpand"  
+                VerticalOptions="StartAndExpand"  
+                Color="{StaticResource headcolor}"/>
+                            <Label Grid.Row="1" HorizontalTextAlignment="Center" Text="Zintegrowana Platforma Bezpieczeństwa powstała, aby umożliwić użytkowniką w sposób prostu i łatwy dostęp do swych najważnieszych informacji związanych z bezpieczeństwem. "/>
+                            <Label Grid.Row="2" HorizontalTextAlignment="Center" Text="Autor: Dominik Oleksy"/>
+                            <Label Grid.Row="3" HorizontalTextAlignment="Center" Text="Wszelkie prawa zastrzeżone ©"/>
+                        </Grid>
+                    </RelativeLayout>
+                </RefreshView>
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

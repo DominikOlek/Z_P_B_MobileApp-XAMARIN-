@@ -1,0 +1,135 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Z_P_B_1.Views.DriverInfo"
+             xmlns:local="clr-namespace:Z_P_B_1.ViewModels"  
+             xmlns:model="clr-namespace:Z_P_B_1.Models" x:DataType="local:DriverInfoViewModel"
+             Title="Informacje drogowe">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Zaktualizuj dane"  Command="{Binding GetInfo}"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!--<Style x:Key="LabelMenu" TargetType="Label">
+                <Setter Property="TextDecorations" Value="None"/>
+                <Setter Property="TextColor" Value="DarkGray"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="FontFamily" Value="Tahoma"/>
+            </Style>-->
+            <Style x:Key="active"
+                   TargetType="StackLayout">
+                <Setter Property="Opacity" Value="1"/>
+            </Style>
+            <Style x:Key="unActive"
+                   TargetType="StackLayout">
+                <Setter Property="Opacity" Value="0.5"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView>
+        <StackLayout>
+            <!--<SearchBar Placeholder="Wyszukaj" TextChanged="SearchBar_TextChanged" />-->
+            <!--
+      x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.
+      https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/data-binding/compiled-bindings
+    -->
+            <RefreshView x:DataType="local:DriverInfoViewModel"  IsEnabled="{Binding IsBusy,Mode=TwoWay}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                <StackLayout>
+
+                    <StackLayout Orientation="Horizontal" Spacing="0" Margin="0,0,0,10"  HorizontalOptions="CenterAndExpand">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <StackLayout Orientation="Vertical"  
+                            Spacing="0" Grid.Column="0" Grid.Row="0"
+                            Style="{DynamicResource label1Style}">
+                                <Button Text="Informacje aktualne"  
+                           BorderColor="Transparent"  
+                           BorderWidth="0" Command="{Binding ChangeVieCommand}" CommandParameter="1" Clicked="TapGestureRecognizer_Tapped" BackgroundColor="Transparent"/>
+                                <BoxView HeightRequest="1"  
+                            HorizontalOptions="FillAndExpand"  
+                            VerticalOptions="EndAndExpand"  
+                            Color="{StaticResource headcolor}" />
+                            </StackLayout>
+                            <StackLayout Orientation="Vertical"  
+                            Spacing="0" Grid.Column="1"  Grid.Row="0"
+                            Style="{DynamicResource label2Style}">
+                                <Button Text="Informacje przestarzałe"  
+                           BorderColor="Transparent"  
+                           BorderWidth="0" Command="{Binding ChangeVieCommand}" CommandParameter="2" Clicked="TapGestureRecognizer_Tapped" BackgroundColor="Transparent"/>
+                                <BoxView HeightRequest="1"  
+                            HorizontalOptions="FillAndExpand"  
+                            VerticalOptions="EndAndExpand"  
+                            Color="{StaticResource headcolor}" />
+                            </StackLayout>
+                        </Grid>
+                    </StackLayout>
+
+                    <CollectionView x:Name="ItemsListView"
+                ItemsSource="{Binding Mandats}"
+                SelectionMode="None"
+                IsVisible="{Binding Page1}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Padding="10" x:DataType="model:MandatDto">
+                                    <Frame>
+                                        <StackLayout>
+                                            <Label Text="{Binding tytul}" 
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="{DynamicResource textSizeBigger}" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                                            <Label FontSize="{DynamicResource textSize}" LineBreakMode="NoWrap" 
+                                    Style="{DynamicResource ListItemTextStyle}" >
+                                                <Label.Text>
+                                                    <MultiBinding StringFormat="Data otrzymania: {0}/{1}/{2} ">
+                                                        <Binding Path="dataWydania.Day" />
+                                                        <Binding Path="dataWydania.Month" />
+                                                        <Binding Path="dataWydania.Year" />
+                                                    </MultiBinding>
+                                                </Label.Text>
+                                            </Label>
+                                            <Label Text="{Binding pktZaMandat,StringFormat='Liczba punktów karnych: {0}'}" 
+                                    Style="{DynamicResource ListItemDetailTextStyle}" 
+                                    FontSize="{DynamicResource textSize}" />
+                                            <Label Text="{Binding mWstrzymania,StringFormat='Czas utracenia uprawnień: {0} miesiąc/e'}" 
+                                    LineBreakMode="NoWrap" 
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="{DynamicResource textSize}" />
+                                            <Label Text="{Binding opis}" 
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="{DynamicResource textSize}" />
+                                        </StackLayout>
+                                    </Frame>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                    <CollectionView x:Name="HistListView"
+                ItemsSource="{Binding Hist}"
+                SelectionMode="None"
+                IsVisible="{Binding Page2}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Padding="10" x:DataType="model:DriverPrev">
+                                    <Frame>
+                                        <StackLayout>
+                                            <Label Text="{Binding Describe}" 
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="{DynamicResource textSize}" />
+                                        </StackLayout>
+                                    </Frame>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </RefreshView>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

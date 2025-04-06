@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Z_P_B_1.Views.TaryfikatorsPage"
+             xmlns:local="clr-namespace:Z_P_B_1.ViewModels"  
+             xmlns:model="clr-namespace:Z_P_B_1.Models"  
+             Title="Taryfikator mandatów">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Zaktualizuj dane"  Command="{Binding LoadItemsCommand}" CommandParameter="1"/>
+    </ContentPage.ToolbarItems>
+    <StackLayout>
+        <SearchBar Placeholder="Wyszukaj" TextChanged="SearchBar_TextChanged" />
+        <!--
+      x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.
+      https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/data-binding/compiled-bindings
+    -->
+        <RefreshView x:DataType="local:TaryfikatorsPageViewModel"  IsEnabled="{Binding IsBusy,Mode=TwoWay}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+            <CollectionView x:Name="ItemsListView"
+                ItemsSource="{Binding taryfikators}"
+                SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="10" x:DataType="model:Taryfikator">
+                            <Frame>
+                                <StackLayout>
+                                    <Label Text="{Binding tytul}" 
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="{DynamicResource textSizeBigger}" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                                    <Label Text="{Binding liczba_PKT,StringFormat='Liczba punktów karnych: {0}'}" 
+                                    Style="{DynamicResource ListItemDetailTextStyle}"/>
+                                    <Label Text="{Binding miesiąceWstrzymania,StringFormat='Czas utracenia uprawnień: {0} miesiąc/e'}" 
+                                    LineBreakMode="NoWrap" 
+                                    Style="{DynamicResource ListItemTextStyle}"  />
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            
+        </RefreshView>
+    </StackLayout>
+</ContentPage>

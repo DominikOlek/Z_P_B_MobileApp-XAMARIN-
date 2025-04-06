@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Z_P_B_1.Views.OtherBehaviorPage"
+             xmlns:local="clr-namespace:Z_P_B_1.ViewModels"  
+             xmlns:model="clr-namespace:Z_P_B_1.Models" 
+             Title="Instrukcje innych zachowań">
+    <StackLayout>
+        <SearchBar Placeholder="Wyszukaj" TextChanged="SearchBar_TextChanged" />
+        <CollectionView x:Name="ItemsListView"
+                SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="1" x:DataType="model:FirstAidDto">
+                        <Grid HorizontalOptions="FillAndExpand"
+                              VerticalOptions="FillAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="150"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image HorizontalOptions="Center"
+                                 Source="{Binding TitlePhotoName}"
+                                 Grid.Row="0"
+                                 Grid.Column="0"
+                                 Aspect="Fill"
+                                 HeightRequest="150">
+                            </Image>
+                            <AbsoluteLayout Grid.Row="0"
+                                 Grid.Column="0">
+                                <BoxView Color="White"
+                                Opacity="0.5"
+                                AbsoluteLayout.LayoutBounds="0,0.5,1,0.2"
+                                AbsoluteLayout.LayoutFlags="All" >
+                                </BoxView>
+                                <Label 
+                                 AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                 AbsoluteLayout.LayoutFlags="All"
+                                 Text="{Binding Title}"
+                                 TextColor="Black"
+                                 FontSize="{DynamicResource textSizeBigg}"
+                                 FontAttributes="Bold"
+                                 HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center"
+                                >
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                NumberOfTapsRequired="1"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:FirstAidViewModel}}, Path=ItemTappe}"		
+                                CommandParameter="{Binding .}">
+                                        </TapGestureRecognizer>
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </AbsoluteLayout>
+                        </Grid>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>
