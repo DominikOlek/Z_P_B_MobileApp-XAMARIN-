@@ -12,7 +12,7 @@ namespace Z_P_B_1.Models
 
         public string email { get; set; } 
         public string nr_tel { get; set; }
-        public DateTime data_ur { get; set; }
+        public DateTime birthDate { get; set; }
         public string pesel { get; set; } 
         public string nr_telHelp { get; set; }
         public DateTime nextChange { get; set; }

@@ -6,10 +6,10 @@ namespace Z_P_B_1.Models
 {
     public class MandatDto
     {
-        public string tytul { get; set; }
-        public string opis { get; set; }
-        public int pktZaMandat { get; set; }
-        public int mWstrzymania { get; set; }
-        public DateTime dataWydania { get; set; }
+        public string title { get; set; }
+        public string description { get; set; }
+        public int pktForTicket { get; set; }
+        public int monthsOfLost { get; set; }
+        public DateTime dateReceived { get; set; }
     }
 }

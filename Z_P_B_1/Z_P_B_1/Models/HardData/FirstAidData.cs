@@ -48,7 +48,7 @@ namespace Z_P_B_1.Models.HardData
                 "zaalarmować niezwłocznie, przy użyciu wszystkich dostępnych środków osoby będące w strefie zagrożenia\n" +
                 "wezwać straż pożarną.\n" +
                 "2. Telefoniczne alarmowanie należy wykonać w następujący sposób: Po wybraniu numeru alarmowego straży pożarnej 998 i zgłoszeniu się dyżurnego spokojnie i wyraznie podaje się:\n" +
-                "swoje imię i nazwisko, numer telefonu, z którego nadawana jest informacja o zdarzeniu\n" +
+                "swoje imię i lastName, numer telefonu, z którego nadawana jest informacja o zdarzeniu\n" +
                 "adres i nazwę obiektu,\n" +
                 "co się pali, na którym piętrze,\n" +
                 "czy jest zagrożenie dla życia i zdrowia ludzkiego.\n" +

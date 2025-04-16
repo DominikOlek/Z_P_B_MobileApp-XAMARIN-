@@ -53,7 +53,7 @@ namespace Z_P_B_1.Services
                         {
                             var list = JsonSerializer.Deserialize<DriverInfoDto>(content);
                             if (list.mandats == null) {
-                                list.mandats = new MandatDto[] { new MandatDto { tytul = "Brak mandatów" } };
+                                list.mandats = new MandatDto[] { new MandatDto { title = "Brak mandatów" } };
                             }
                             return await Task.FromResult(list);
                         }
@@ -68,7 +68,7 @@ namespace Z_P_B_1.Services
                     }
                     else
                     {
-                        return new DriverInfoDto { mandats = new MandatDto[] { new MandatDto { tytul = "Brak mandatów" } } };
+                        return new DriverInfoDto { mandats = new MandatDto[] { new MandatDto { title = "Brak mandatów" } } };
                     }
                 }
                 catch { }

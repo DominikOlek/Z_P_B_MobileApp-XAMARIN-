@@ -60,7 +60,7 @@ namespace Z_P_B_1.ViewModels
         public async void Send()
         {
             var first = InfoColection.First();
-            if (!CheckFill(first.name, "Wpisz imię") || !CheckFill(first.lastName, "Wpisz nazwisko") || !CheckFill(first.nr_tel, "Wpisz nr telefonu") || !CheckFill(first.pesel, "Wpisz pesel"))
+            if (!CheckFill(first.name, "Wpisz imię") || !CheckFill(first.lastName, "Wpisz lastName") || !CheckFill(first.nr_tel, "Wpisz nr telefonu") || !CheckFill(first.pesel, "Wpisz pesel"))
                 return;
 
             Regex rx = new Regex(@"^((\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*)\s*[;]{0,1}\s*)+$", RegexOptions.Compiled | RegexOptions.IgnoreCase);

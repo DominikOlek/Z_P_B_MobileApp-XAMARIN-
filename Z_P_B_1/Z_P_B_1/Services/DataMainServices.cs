@@ -84,7 +84,7 @@ namespace Z_P_B_1.Services
         {
             try
             {
-                return FromLocal.Where(a => a.tytul.ToLower().Contains(searchText.ToLower()) || a.liczba_PKT.ToString() == searchText);
+                return FromLocal.Where(a => a.title.ToLower().Contains(searchText.ToLower()) || a.pktNumber.ToString() == searchText);
             }
             catch { return null; }
         }

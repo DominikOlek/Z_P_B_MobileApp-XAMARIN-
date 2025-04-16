@@ -61,13 +61,13 @@ namespace Z_P_B_1.Views
                 var data = new RegisterData
                 {
                     pesel = Pesel,
-                    imie = Imie,
-                    nazwisko = Nazwisko,
+                    name = Imie,
+                    lastName = Nazwisko,
                     password = Haslo,
                     confirmPassword = HasloP,
                     email = Email,
                     nr_tel = Tel,
-                    data_ur = DataUr
+                    birthDate = DataUr
                 };
                 if(!await _view.Register(JsonSerializer.Serialize(data)))
                 {
